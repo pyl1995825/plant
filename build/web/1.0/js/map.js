@@ -44,20 +44,20 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(21);
+	__webpack_require__(23);
 
-	var $ = __webpack_require__(5);
+	var $ = __webpack_require__(7);
 
-	var Util = __webpack_require__(6);
-	var QuickTypeModal = __webpack_require__(8);
-	var EntityModal = __webpack_require__(8);
+	var Util = __webpack_require__(8);
+	var QuickTypeModal = __webpack_require__(10);
+	var EntityModal = __webpack_require__(10);
 	// var listContainer = $('.jlistcontainer');
 	// var editContainer = $('.jeditcontainer');
 	// var emptyContainer = $('.jemptyquick');
-	var Common = __webpack_require__(7);
+	var Common = __webpack_require__(9);
 
-	var XTemplate = __webpack_require__(10);
-	var xTemplate = __webpack_require__(16);
+	var XTemplate = __webpack_require__(12);
+	var xTemplate = __webpack_require__(18);
 	// var qtListTpl = require('../../tpl/main/map.xtpl');
 
 	function init() {
@@ -72,7 +72,9 @@
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */
+/* 5 */,
+/* 6 */,
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11086,12 +11088,12 @@
 
 
 /***/ },
-/* 6 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(5);
+	var $ = __webpack_require__(7);
 
-	var Common = __webpack_require__(7);
+	var Common = __webpack_require__(9);
 
 	var observeQueue = {};
 
@@ -11240,12 +11242,12 @@
 	};
 
 /***/ },
-/* 7 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(5);
+	var $ = __webpack_require__(7);
 
-	var Util = __webpack_require__(6);
+	var Util = __webpack_require__(8);
 
 	var pageNameMap = {
 		BOT: 0,
@@ -11798,14 +11800,14 @@
 	}
 
 /***/ },
-/* 8 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * 机器人数据增删改查模块
 	 */
-	var UTIL = __webpack_require__(6);
-	var config = __webpack_require__(9);
+	var UTIL = __webpack_require__(8);
+	var config = __webpack_require__(11);
 	var prefix = config.modalPrefix;
 
 	module.exports = {
@@ -11912,7 +11914,7 @@
 	};
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -11920,7 +11922,7 @@
 	};
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11928,11 +11930,11 @@
 	/**
 	 * xtemplate runtime
 	 */
-	var util = __webpack_require__(11);
-	var nativeCommands = __webpack_require__(13);
+	var util = __webpack_require__(13);
+	var nativeCommands = __webpack_require__(15);
 	var commands = {};
-	var Scope = __webpack_require__(14);
-	var LinkedBuffer = __webpack_require__(15);
+	var Scope = __webpack_require__(16);
+	var LinkedBuffer = __webpack_require__(17);
 
 	// for performance: reduce hidden class
 	function TplWrap(name, runtime, root, scope, buffer, originalName, fn, parent) {
@@ -12371,7 +12373,7 @@
 	 */
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -12379,7 +12381,7 @@
 	// http://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
 	// http://wonko.com/post/html-escaping
 
-	var escapeHtml = __webpack_require__(12);
+	var escapeHtml = __webpack_require__(14);
 
 	var SUBSTITUTE_REG = /\\?\{([^{}]+)\}/g;
 	var win = typeof global !== 'undefined' ? global : window;
@@ -12487,7 +12489,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12571,7 +12573,7 @@
 
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12580,8 +12582,8 @@
 	 * native commands for xtemplate.
 	 */
 
-	var Scope = __webpack_require__(14);
-	var util = __webpack_require__(11);
+	var Scope = __webpack_require__(16);
+	var util = __webpack_require__(13);
 	var commands = {
 	  // range(start, stop, [step])
 	  range: function range(scope, option) {
@@ -12850,7 +12852,7 @@
 	module.exports = commands;
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -13019,7 +13021,7 @@
 	module.exports = Scope;
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13027,7 +13029,7 @@
 	/**
 	 * LinkedBuffer of generate content from xtemplate
 	 */
-	var util = __webpack_require__(11);
+	var util = __webpack_require__(13);
 
 	function Buffer(list, next, tpl) {
 	  this.list = list;
@@ -13173,7 +13175,7 @@
 	 */
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13184,9 +13186,9 @@
 	 * simple facade for runtime and compiler
 	 */
 
-	var XTemplateRuntime = __webpack_require__(10);
+	var XTemplateRuntime = __webpack_require__(12);
 	var util = XTemplateRuntime.util;
-	var Compiler = __webpack_require__(17);
+	var Compiler = __webpack_require__(19);
 	var _compile = Compiler.compile;
 
 	/**
@@ -13291,7 +13293,7 @@
 	 */
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13300,14 +13302,14 @@
 	 * translate ast to js function code
 	 */
 
-	var XTemplateRuntime = __webpack_require__(10);
-	var parser = __webpack_require__(18);
-	parser.yy = __webpack_require__(19);
+	var XTemplateRuntime = __webpack_require__(12);
+	var parser = __webpack_require__(20);
+	parser.yy = __webpack_require__(21);
 	var util = XTemplateRuntime.util;
 	var nativeCommands = XTemplateRuntime.nativeCommands;
 	var nativeUtils = XTemplateRuntime.utils;
 
-	var compilerTools = __webpack_require__(20);
+	var compilerTools = __webpack_require__(22);
 	var pushToArray = compilerTools.pushToArray;
 	var wrapByDoubleQuote = compilerTools.wrapByDoubleQuote;
 	var convertIdPartsToRawAccessor = compilerTools.convertIdPartsToRawAccessor;
@@ -14016,7 +14018,7 @@
 	 */
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';/*
@@ -14096,7 +14098,7 @@
 	ret=undefined;self.$$=$$;for(var i=0;i<len;i++){self['$'+(len-i)]=peekStack(valueStack,i+1);}if(reducedAction){ret=reducedAction.call(self);}if(ret!==undefined){$$=ret;}else{$$=self.$$;}var reverseIndex=len*-1;stateStack.splice(reverseIndex,len);valueStack.splice(reverseIndex,len);symbolStack.splice(reverseIndex,len);symbolStack.push(reducedSymbol);valueStack.push($$);var newState=gotos[peekStack(stateStack)][reducedSymbol];stateStack.push(newState);break;case GrammarConst.ACCEPT_TYPE:return $$;}}};return parser;}();if(true){module.exports=parser;}
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14302,7 +14304,7 @@
 	module.exports = ast;
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14434,7 +14436,7 @@
 	};
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

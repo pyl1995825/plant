@@ -1,0 +1,17 @@
+<div class="footer-bg" style="clear: both">
+    <div class="w-content m-center footer">
+        <div class="footer_main">
+            <a class="footer_link" href="#">关于我们</a>                
+            <a class="footer_link" href="#">免费声明</a>                
+            <a class="footer_link" href="#">百科协议</a>                
+            <a class="footer_link" href="#">注册协议</a>                
+            <a class="footer_link" href="#">常见问题</a>
+        </div>
+        <div><p>
+              技术支持：PoleSwify<br />
+              Copyright © 2003-2017 njfu.edu.cn All Rights Reserved<br />
+              版权所有 © 2003-2017 东北林业大学 保留所有权利 地址：哈尔滨市和兴路26号 
+            </p>
+        </div>
+    </div>
+</div>

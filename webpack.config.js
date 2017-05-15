@@ -10,6 +10,8 @@ var domain = 'http://182.254.129.209:8080';
 var bigVersion = '1.0';
 var publicResourcePath = 'http://182.254.129.209:8080/plant_web';
 
+var imageLoaders = ['file?name=/img/[name].[ext]'];
+
 module.exports = {
 	entry: {
 		'map': './src/web/js/entry/map.js',
@@ -24,7 +26,11 @@ module.exports = {
 		loaders: [
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract("style-loader","css-loader")
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg|jpg)$/i,
+				loaders: imageLoaders
 			},
 			{
 				test: /\.js$/,

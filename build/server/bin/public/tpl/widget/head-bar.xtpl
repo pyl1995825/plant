@@ -1,0 +1,41 @@
+<div class="head-bg">
+    <div class="w-content m-center head">
+        <div class="head-left fl">
+            <div id="logo_content">
+                <a href="/" id="logo_link">东北林业大学校园植物网</a>
+            </div>
+        </div>
+        <div class="head-right fr">
+            <div class="contribute-bg">
+                <span><a href="#" class="contribute">投稿</a></span> <span><a href="#">注册</a></span>
+                <span><a href="#">登录 </a></span>
+            </div>
+            <div class="search-bg" id="so_mid">
+                <div id="so_select" class="so_select">
+                    <input checked="checked" value="1" name="so" type="radio" />文章 <input name="so"
+                        value="2" type="radio" />植物
+                </div>
+               <form target="_blank" id="soso">
+                    <input name="wd" id="wd" class="txt-search fl" placeholder='请输入关键字' type="text" />
+                    <input name="iid" type="hidden" id="iid" value="11">
+                    <input name="siteid" type="hidden" id="siteid" value="1">
+                    <input name="searchscope" type="hidden" id="searchscope" value="0">
+                    <input name="timescope" type="hidden" id="timescope" value="0">
+                    <input name="sorttype" type="hidden" id="sorttype" value="1">
+                    <a href="javascript:void(0);" id="so_bin" class="btn-search fr"></a>
+              </form>
+            </div>
+        </div>
+    </div>
+    <div class="w-content m-center nav">
+        <ul>
+            <li><a href="http://plants.njfu.edu.cn" class="cur0">首    页</a></li>
+             <li><a href="/c54/index.html" class="cur1">地    图</a></li>
+             <li><a href="/c60/index.html" class="cur1">植物名录</a></li>
+             <li><a href="/c61/index.html" class="cur1">植物花历</a></li>
+             <li><a href="/c55/index.html" class="cur1">植物搜索</a></li>
+             <li><a href="/c62/index.html" class="cur1">扩展知识</a></li>
+             <li><a href="/c63/index.html" class="cur1">植物论坛</a></li>
+        </ul>
+    </div>
+</div>

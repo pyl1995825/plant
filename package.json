@@ -16,6 +16,7 @@
     "image-webpack-loader": "3.0.0",
     "string-replace-loader": "1.0.5",
     "style-loader": "0.13.1",
+    "url-loader": "0.5.8",
     "webpack": "1.13.2",
     "webpack-md5-hash": "0.0.5",
     "xtemplate": "4.6.0",
