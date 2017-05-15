@@ -1,0 +1,18 @@
+{
+  "name": "plantweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lyndonpeng",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "4.0.5",
+    "jquery": "1.12.4",
+    "jquery-textrange": "1.3.3",
+    "jquery-ui": "1.12.1",
+    "xtemplate": "4.6.0"
+  }
+}

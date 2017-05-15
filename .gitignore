@@ -1,0 +1,4 @@
+/node_modules
+/src/server/node_modules
+/src/web/node_modules
+/build/server/bin/node_modules

@@ -1,0 +1,34 @@
+{
+  "name": "plant",
+  "version": "0.0.1",
+  "description": "nefu_plant navigation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "3.0.1",
+    "css-loader": "0.25.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "file-loader": "0.9.0",
+    "html-string-replace-webpack-plugin": "1.0.5",
+    "html-webpack-plugin": "2.22.0",
+    "image-webpack-loader": "3.0.0",
+    "string-replace-loader": "1.0.5",
+    "style-loader": "0.13.1",
+    "webpack": "1.13.2",
+    "webpack-md5-hash": "0.0.5",
+    "xtemplate": "4.6.0",
+    "xtpl-loader": "0.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pyl1995825/plant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pyl1995825/plant/issues"
+  },
+  "homepage": "https://github.com/pyl1995825/plant#readme"
+}

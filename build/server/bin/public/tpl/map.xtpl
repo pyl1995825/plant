@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {{{include("./widget/head-meta")}}}
+    
+        <link rel="stylesheet" href="http://182.254.129.209:8080/plant_web/css/map.css">
+    
+</head>
+<body>
+    <div class="layout">
+        {{{include("./widget/head-bar")}}}
+        <div class="main-container jmaincontainer">
+            <div class="mod-page jlistcontainer">
+                <div class="mod-page-header jpageheader hidden">
+                    <div class="mod-page-title">
+                        <p class="mod-page-name mod-form-quicktype">快捷输入</p>
+                        <!-- <p class="mod-page-name"></p> -->
+                    </div>
+                    <span class="ui-btn-blue jbtnaddquicktype quicktype-add-btn">新增</span>
+                </div>
+                <div class="mod-outline jlistwrapper">
+                    <ul class="mod-outline-list jquicktypelistwraper quicktype-list-wraper">
+                    </ul>
+                </div>
+            </div>
+            <!-- 快捷输入为空 -->
+            <div class="mod-page mod-empty empty-quicktype jemptyquick hidden" style="display: table-cell;">
+                <div class="figure"></div>
+                <div class="bottom">
+                    <h2 class="title">还没有建立快捷输入</h2>
+                    <a href="#" class="ui-btn-blue jbtnaddquicktype">现在创建一个</a>
+                    <ul class="note">
+                        <li class="note-item">快捷输入是在流程中用户可以快速点击回复的选项集合。当机器人询问问题时，可提前设置好快捷输入的选项集合供用户选择。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mod-page jeditcontainer hidden">
+                <div class="mod-page-header">
+                    <div class="mod-page-title">
+                        <p class="mod-page-name mod-form-custom">快捷输入</p>
+                        <span class="ui-btn-blue jbtnsavequicktype quicktype-save-button">保存</span>
+                    </div>
+                </div>
+                <div class="mod-form-section">
+                    <div class="mod-form">
+                        <div class="mod-form-body">
+                            <div class="mod-form-row">
+                                <div class="mod-form-field">
+                                    <div class="mod-form-col">
+                                        <div class="ui-radio-wrap">
+                                            <input type="radio" id="radio-1" name="type" value="1" checked>
+                                            <label for="radio-1" class="ui-radio"></label>
+                                            <label for="radio-1" class="ui-radio-txt">实体选择</label>
+                                        </div>
+                                        <div class="ui-radio-wrap">
+                                            <input type="radio" id="radio-2" name="type" value="2">
+                                            <label for="radio-2" class="ui-radio"></label>
+                                            <label for="radio-2" class="ui-radio-txt">手动输入</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 实体选择 -->
+                            <div class="mod-form-section manual-keyin jchoosewrapper hidden">
+                                <div class="mod-form-row jchoosename">
+                                    <div class="mod-form-title">
+                                        <label>快速输入名称</label>
+                                    </div>
+                                    <div class="mod-form-field">
+                                        <div class="mod-form-col">
+                                            <input type="text" class="ui-input jinputname jinputer" placeholder="输入实体名称，30个字符以内" data-limit="variable" maxlength="30">
+                                            <div class="ui-input-errtips jerrtips hidden"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mod-form-row jchooselist">
+                                    <div class="mod-form-title">
+                                        <label>选择实体</label>
+                                    </div>
+                                    <div class="mod-form-field">
+                                        <div class="mod-form-col">
+                                            <input type="text" class="ui-input sm jentity jinputer" placeholder="输入实体值" data-limit="variable" maxlength="30">
+                                            <ul class="ui-input-ac qtchooselist hidden">
+                                            </ul>
+                                            <div class="ui-input-errtips jerrtips hidden"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 手动输入 -->
+                            <div class="mod-form-section instance-select jinputwrapper hidden">
+                                <div class="mod-form-row jinputhead">
+                                    <div class="mod-form-title">
+                                        <label>快速输入名称</label>
+                                    </div>
+                                    <div class="mod-form-field">
+                                        <div class="mod-form-col">
+                                            <input type="text" class="ui-input jinputname jinputer" placeholder="输入实体名称，30个字符以内" data-limit="variable" maxlength="30">
+                                            <div class="ui-input-errtips jerrtips hidden"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mod-form-row jinputlist">
+                                    <div class="mod-form-title">
+                                        <label>快捷选项名称</label>
+                                    </div>
+                                    <div class="mod-form-field">
+                                        <div class="mod-form-col jinputer">
+                                            <ul class="ui-draglist ui-sortable qtinputlist">
+                                            </ul>
+                                            <div class="ui-draglist-inputrow jcontrol">
+                                                <input type="text" class="ui-draglist-attrinput jinputentity" placeholder="输入快捷选项名称，6个字符以内" maxlength="6">
+                                            </div>
+                                        </div>
+                                        <div class="ui-input-errtips jerrtips hidden"></div>
+                                    </div>
+                                </div>
+                                <div class="mod-form-row ps-row" style="position:static;">
+                                    <div class="mod-form-field">
+                                        <div class="mod-form-col">
+                                            <ul class="ps-list">
+                                                <li>大规模数据消耗资源较多，建议手动更新或在首次提交后使用接口进行部分更新</li>
+                                                <li>需要高频更新的接口请单独邮件open_robot@tencent.com申请</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{{include("./widget/login")}}} {{{include("./widget/dialog")}}}
+    
+        <script type="text/javascript" src="http://182.254.129.209:8080/plant_web/js/map.js"></script>
+        
+</body>
+</html>

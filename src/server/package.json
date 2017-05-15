@@ -1,0 +1,17 @@
+{
+  "name": "HTTPServer",
+  "version": "0.0.0",
+  "description": "Another awesome nodejs server",
+  "private": true,
+  "dependencies": {
+    "binary-string": "1.0.0",
+    "koa": "1.2.4",
+    "koa-body": "1.6.0",
+    "koa-bodyparser": "2.2.0",
+    "koa-favicon": "1.2.1",
+    "koa-multer": "0.0.2",
+    "koa-router": "5.4.0",
+    "xtemplate": "4.6.0",
+    "xtpl": "3.3.0"
+  }
+}
