@@ -9,6 +9,7 @@ var HtmlStringReplacePlugin = require('html-string-replace-webpack-plugin');
 var domain = 'http://182.254.129.209:8080';
 var bigVersion = '1.0';
 var publicResourcePath = 'http://182.254.129.209:8080/plant_web';
+var publicImagePath = 'http://182.254.129.209:8080/images';
 
 var imageLoaders = ['file?name=/img/[name].[ext]'];
 
@@ -83,6 +84,10 @@ module.exports = {
 					match: /\{%resource\}/g,
 					replacement: publicResourcePath
 				},
+				{
+					match: /\{%image\}/g,
+					replacement: publicImagePath
+				}
 			]
 		})
     ]	
