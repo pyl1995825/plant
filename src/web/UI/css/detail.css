@@ -49,7 +49,9 @@ a:hover {
   text-decoration: none;
   color: #42972b;
 }
-
+strong, b {
+  font-weight: bold;
+}
 input, textarea, button, select {
   font-size: 1em;
   font-family: inherit; 
@@ -86,7 +88,7 @@ body {
 .head-right{width: 400px;height: 60px;}
 .fl{float: left;}
 .fr{float: right;}
-#logo_content {background: url(http://182.254.129.209:8080/plant_web/img/nefu.png) no-repeat; background-size: 60px;height:60px;position:relative;}
+#logo_content {background: url("../img/nefu.png") no-repeat; background-size: 60px;height:60px;position:relative;}
 #logo_link {position: absolute; top: 12px; left: 75px; font-size:24px; font-weight: 600px}
 .contribute-bg {width: 400px;height: 30px;overflow: hidden;}
 .contribute-bg span {float: right;line-height: 28px;}
@@ -155,7 +157,7 @@ body {
   height: 30px;
   border: none;
   cursor: pointer;
-  background: url(http://182.254.129.209:8080/plant_web/img/search.jpg) no-repeat center center;
+  background: url(../img/search.jpg) no-repeat center center;
 }
 .nav {
   margin-top: 27px;
@@ -209,15 +211,45 @@ body {
 .main-container{width:1000px; min-height:100%;margin:0 auto;}
 .main-wrapper{width:1000px;height:100%;}
 
-/*map.css*/
-.map-info {
+/*detail.css*/
+.detail-con {
+  width: 1000px;
+  height: 100%;
+  overflow: auto;
+}
+
+.detail-info {
   width: 300px;
   height: 400px;
   float: right;
-  margin: 10px;
-  padding: 5px 10px;
+  margin-top: 10px;
+  padding: 0px 10px;
+  border-left: 1px solid #EDF0EB;
 }
-#plant-map {
-  margin-right: 330px;
-  height: 560px;
+
+.detail-con .more-info p {
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 5px;
+}
+
+.base-info {
+  height: 25px;
+  margin: 8px 30px;
+}
+
+#detail-map {
+  margin-right: 350px;
+  margin-bottom: 20px;
+  height: 400px;
+}
+
+.more-info {
+  margin-right: 350px;
+}
+.detail-con .more-info p.desc {
+	padding-left: 20px;
+  margin-top: 10px;
+  height: 100%;
 }

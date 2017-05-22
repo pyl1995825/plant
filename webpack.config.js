@@ -6,7 +6,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlStringReplacePlugin = require('html-string-replace-webpack-plugin');
 
-var domain = 'http://182.254.129.209:8080';
+var argv = process.argv;
+var env = argv.indexOf('--release') >= 0 ? 'release' : 'dev';
+var isRelease = env == 'release';
+
+var domain = isRelease ? '182.254.129.209:80' : '127.0.0.1:80';
 var bigVersion = '1.0';
 var publicResourcePath = 'http://182.254.129.209:8080/plant_web';
 var publicImagePath = 'http://182.254.129.209:8080/images';
@@ -16,7 +20,9 @@ var imageLoaders = ['file?name=/img/[name].[ext]'];
 module.exports = {
 	entry: {
 		'map': './src/web/js/entry/map.js',
-		'index': './src/web/js/entry/index.js'
+		'index': './src/web/js/entry/index.js',
+		'list': './src/web/js/entry/list.js',
+		'detail': './src/web/js/entry/detail.js'
 	},
 	output: {
 		path: './build/web/' + bigVersion,
@@ -70,6 +76,18 @@ module.exports = {
 			template: 'src/web/tpl/index.html',
 			chunks: ['index'],
 			filename: path.join(__dirname, 'build/server/bin/public/tpl/index.xtpl'),	// tpl ext must be .xtpl
+			inject: false
+		}),
+		new HtmlWebpackPlugin({
+			template: 'src/web/tpl/list.html',
+			chunks: ['list'],
+			filename: path.join(__dirname, 'build/server/bin/public/tpl/list.xtpl'),	// tpl ext must be .xtpl
+			inject: false
+		}),
+		new HtmlWebpackPlugin({
+			template: 'src/web/tpl/detail.html',
+			chunks: ['detail'],
+			filename: path.join(__dirname, 'build/server/bin/public/tpl/detail.xtpl'),	// tpl ext must be .xtpl
 			inject: false
 		}),
         new ExtractTextPlugin('css/[name].css'),

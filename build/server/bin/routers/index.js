@@ -1,13 +1,7 @@
 var router = require('koa-router')();
 
-// var DataService = require('../rpc/botdataservice');
-// var Config = require('../common/config');
-// var Log = require('../common/log');
-
 function* renderPage(tplName, context, pageId, needCheckBotStatus){
 	var renderData = {
-		userName: 'hi,' + context.databox.nickName,
-		userIcon: context.databox.userIcon,
 		isAuthed: true,
 		curPageId: pageId
 	};
@@ -30,11 +24,23 @@ function* renderPage(tplName, context, pageId, needCheckBotStatus){
 }
 
 router.get('/', function*(next){
-	yield this.render('index');
+	yield renderPage('index',this, 1, true);
+});
+
+router.get('/index', function*(next){
+	yield renderPage('index',this, 1, true);
 });
 
 router.get('/map', function*(next) {
-	yield this.render('map');
+	yield renderPage('map',this, 2, true);
+});
+
+router.get('/list', function*(next) {
+	yield renderPage('list',this, 3, true);
+});
+
+router.get('/detail', function*(next) {
+	yield renderPage('detail',this, 4, true);
 });
 
 module.exports = router;

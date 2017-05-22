@@ -2,25 +2,11 @@ var $ = require('jquery');
 
 var Util = require('../libs/util');
 
-var pageNameMap = {
-	BOT: 0,
-	BOTINFO: 1,
-	ENTITY: 2,
-	INTENT: 3,
-	QUICKTYPE: 4,
-	CARDNORMAL: 5,
-	CARDINFO: 6,
-	QA: 7
-};
 var pageUrlMap = {
-	0: 'http://{%domain}/bot',
-	1: 'http://{%domain}/bot/info?bid={%botId}',
-	2: 'http://{%domain}/bot/entity?bid={%botId}',
-	3: 'http://{%domain}/bot/intent?bid={%botId}',
-	4: 'http://{%domain}/bot/quicktype?bid={%botId}',
-	5: 'http://{%domain}/bot/card-normal?bid={%botId}',
-	6: 'http://{%domain}/bot/card-info?bid={%botId}',
-	7: 'http://{%domain}/bot/qa?bid={%botId}'
+	1: 'http://{%domain}/index',
+	2: 'http://{%domain}/map',
+	3: 'http://{%domain}/list',
+	4: 'http://{%domain}/detail'
 };
 
 // 标记页面数据是否发生修改
@@ -43,35 +29,13 @@ function getCookie(name) {
 }
 
 var self = this;
-exports.initSideBar = function(botId, page){
-	$('.jbotsidebar [data-pid]').click(function(evt){
+exports.initSideBar = function(){
+	$('.jnavbarlist [data-pid]').click(function(evt){
 		evt.preventDefault();
 		
 		var pid = $(evt.currentTarget).attr('data-pid') - 0;
-		if (page == 'BOTINFO' && !botId &&	// 新建机器人页面 
-			([
-				pageNameMap.ENTITY,
-				pageNameMap.INTENT,
-				pageNameMap.QUICKTYPE,
-				pageNameMap.CARDINFO,
-				pageNameMap.CARDNORMAL,
-				pageNameMap.QA
-			].indexOf(pid) >= 0)) { // 点击跳转实体页或意图页，禁止跳转
-			self.showDialog({
-				title: '提示',
-				text: '请先创建机器人',
-				confirmText: '确定'
-			});
-		} else {
-			var url = pageUrlMap[pid].replace('{%botId}', botId);
-			location.href = url;
-		}
-	});
-
-	// 卡片侧边栏下拉操作
-	$('.jbotsidebar .jcard .jtitle').click(function(evt){
-		$(this).toggleClass('cur');
-		$('.jbotsidebar .jcard .jsubcard').slideToggle();
+		
+		location.href = pageUrlMap[pid];
 	});
 
 	$('.jpageheadbar .juser').bind('click', function(evt){
@@ -86,26 +50,6 @@ exports.initSideBar = function(botId, page){
 			}
 		});
 	});
-
-	// 卡片
-	/*if($('.mod-sidenav-sub a').hasClass('cur')) {
-		$('.mod-sidenav-sub').css('display', 'block');
-	} else {
-		$('.mod-sidenav-sub').css('display', 'none');
-	}
-	var flag = true;
-	$('.mod-sidenav-card').click(function() {
-		if(flag) {
-			$('.mod-sidenav-portal li .mod-sidenav-card:after').css('background-position','-101px -34px');
-			flag = false;
-		} else {
-			$('.mod-sidenav-portal li .mod-sidenav-card:after').css('background-position','-101px -22px');
-			flag = true;
-		}
-		$('.mod-sidenav-sub').slideToggle();
-	});*/
-	
-
 
 };
 

@@ -27,15 +27,15 @@
             </div>
         </div>
     </div>
-    <div class="w-content m-center nav">
+    <div class="w-content m-center nav jnavbarlist">
         <ul>
-            <li><a href="http://plants.njfu.edu.cn" class="cur0">首    页</a></li>
-             <li><a href="/c54/index.html" class="cur1">地    图</a></li>
-             <li><a href="/c60/index.html" class="cur1">植物名录</a></li>
-             <li><a href="/c61/index.html" class="cur1">植物花历</a></li>
-             <li><a href="/c55/index.html" class="cur1">植物搜索</a></li>
-             <li><a href="/c62/index.html" class="cur1">扩展知识</a></li>
-             <li><a href="/c63/index.html" class="cur1">植物论坛</a></li>
+          <li><a href="javascript:void(0);" class="{{curPageId===1?" cur0":""}}" data-pid="1">首    页</a></li>
+          <li><a href="javascript:void(0);" class="{{curPageId===2?" cur0":""}}" data-pid="2">地    图</a></li>
+          <li><a href="javascript:void(0);" class="{{curPageId===3?" cur0":""}}" data-pid="3">植物名录</a></li>
+          <li><a href="javascript:void(0);" class="{{curPageId===4?" cur0":""}}" data-pid="4">植物花历</a></li>
+          <li><a href="javascript:void(0);" class="{{curPageId===5?" cur0":""}}" data-pid="5">植物搜索</a></li>
+          <li><a href="javascript:void(0);" class="cur1" data-pid="6">扩展知识</a></li>
+          <li><a href="javascript:void(0);" class="cur1" data-pid="7">植物论坛</a></li>
         </ul>
     </div>
 </div>

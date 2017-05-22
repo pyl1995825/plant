@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {{{include("./widget/head-meta")}}}
+    <%for(var css in htmlWebpackPlugin.files.css){%>
+        <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[css]%>">
+    <%}%>
+</head>
+<body>
+    <div class="layout">
+        {{{include("./widget/head-bar")}}}
+        <div class="main-container jmaincontainer">
+            <div class="filter-content">
+            	<h1>筛选条件</h1>
+            	<div class="select-wrap">
+	        		<select name="" class="select jphyselect">
+	                    <option value="102" selected>请选择门类</option>
+	                    <option value="108">裸子植物</option>
+	                    <option value="101">被子植物</option>
+	                </select>
+	        		<select class="select jfamselect">
+	        			<option value="102" selected>请选择科类</option>
+	                    <option value="108">松科</option>
+	                    <option value="101">桦木科</option>
+	                    <option value="105">榆科</option>
+	                    <option value="104">杨柳科</option>
+	                    <option value="109">槭树科</option>
+	        		</select>
+	        		<select class="select jgenusselect">
+	        			<option value="102" selected>请选择属类</option>
+	                    <option value="108">松属</option>
+	                    <option value="101">云杉属</option>
+	                    <option value="105">桦属</option>
+	                    <option value="104">柳属</option>
+	                    <option value="109">槭树属</option>
+	        		</select>
+	        		<button class="ui-button primary">查询</button>
+        		</div>
+            </div>
+            <div class="result-content">
+            	<h1>查询结果</h1>
+            	<div class="search-list">
+            		<dl>
+	                    <dt><a href="#" target="_blank" class="hovercolor"><strong>白桦</strong></a></dt>
+	                    <dd>
+	                        花期：<span class="f_333333">4月下旬—5月上旬</span></dd>
+	                    <dd>
+	                        <p>
+	                            形态特征：枝条暗灰色或暗褐色，无毛，具或疏或密 的树脂腺体或无；小枝暗灰色或褐色，......</p>
+	                    </dd>
+                    	<dd class="show_dd">
+                        	<a href="#" target="_blank" class="hovercolor">详细 »</a>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>旱柳</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">5月上旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：树冠广圆形；树皮暗灰黑色，有裂沟；枝细长，直立或斜展，浅褐黄色或带绿色，后变褐色，无毛，幼枝有毛......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>糖槭</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">5月上中旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：直立生长，树形为卵圆形。树势雄伟、典雅。单叶对生，长可达10厘米......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>暴马丁香</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">6月上中旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：具直立或开展枝条；树皮紫灰褐色，具细裂纹。枝灰褐色，无毛，当年生枝绿色或略带紫晕，无毛，疏生皮孔，二年生枝棕褐色，光亮，无毛，具较密皮孔...</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>榆叶梅</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">4月下旬-5月上旬</span></dd>
+                        <dd>
+                            <p>
+                                植物形态：枝紫褐色，叶宽椭圆形至倒卵形，先端3裂状，缘有不等的粗重锯齿......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>山丁子</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">5月中下旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：树干灰褐色，光滑，不易开裂，新梢黄褐色，无毛，嫩梢绿色微带红褐......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>连翘</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">4月中旬-5月上旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：落叶灌木。枝开展或下垂，棕色、棕褐色或淡黄褐色，小枝土黄色或灰褐色，略呈四棱形，疏生皮孔，节间中空，节部具实心髓......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>绣线菊</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">6月中下旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：冬芽有数枚褐色外露鳞片，疏被柔毛叶长圆状披针形或披针形，叶片长圆披针形至披针形......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>树锦鸡儿</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">5月中下旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：花萼钟状，花冠黄色，旗瓣菱状宽卵形，龙骨瓣较旗瓣稍短，瓣柄较瓣片略短，耳钝或略呈三角形......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <dl>
+                        <dt><a href="#" target="_blank" class="hovercolor"><strong>毛樱桃</strong></a></dt>
+                        <dd>
+                            花期：<span class=" f_333333">5月中下旬</span></dd>
+                        <dd>
+                            <p>
+                                形态特征：小枝紫褐色或灰褐色，嫩枝密被绒毛到无毛。冬芽卵形，疏被短柔毛或无毛。叶片卵状椭圆形或倒卵状椭圆形......</p>
+                        </dd>
+                        <dd class="show_dd">
+                            <a href="#" target="_blank" class="hovercolor">详细 »</a></dd>
+                    </dl>
+
+                    <div class="paging">
+                		<ul id="jpagination" class="pagination"></ul>
+                    </div>
+            	</div>
+            </div>
+        </div>
+        {{{include("./widget/footer")}}}
+    </div>
+    {{{include("./widget/login")}}} {{{include("./widget/dialog")}}}
+    <%for(var chunk in htmlWebpackPlugin.files.chunks){%>
+        <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry%>"></script>
+        <%}%>
+</body>
+</html>

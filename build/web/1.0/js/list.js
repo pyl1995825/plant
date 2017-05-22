@@ -44,15 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(23);
-	__webpack_require__(25);
+	__webpack_require__(29);
 
 	var $ = __webpack_require__(7);
-
-	__webpack_require__(28);
+	__webpack_require__(31);
+	__webpack_require__(32);
 	var Util = __webpack_require__(8);
-	var QuickTypeModal = __webpack_require__(10);
-	var EntityModal = __webpack_require__(10);
+	var ListModal = __webpack_require__(33);
 	// var listContainer = $('.jlistcontainer');
 	// var editContainer = $('.jeditcontainer');
 	// var emptyContainer = $('.jemptyquick');
@@ -65,126 +63,43 @@
 	function init() {
 
 		// 初始化导航
+
+		var SelectedConfig = function() {
+			return {
+				init: function(params) {  // 初始化样式
+					$(params).selectMatch({prefix: 'ui-'});
+				},
+				bindClick: function(params) { // 绑定li事件
+					if($(params).attr('disabled') || $(params).hasClass('disabled')) {
+						return false;
+					}
+					var text = $(params).text();
+					$(params).addClass('selected').siblings().removeClass('selected');
+					$(params).closest('div.ui-select').removeClass('active').find('a .ui-select-text').text(text);
+				}
+			}
+		}();
+
 		Common.initSideBar();
+		SelectedConfig.init($(".select"));
 
-		$('.hiSlider').hiSlider();
+		$('.select .ui-select-datalist-li').on('click', function() {
+			SelectedConfig.bindClick($(this));
+		});
 
-	    BaiduMap(); // baidu map api
-	}
+		$.jqPaginator('#jpagination',{
+	        totalPages: 10,
+	        visiblePages: 10,
+	        currentPage: 1,
+	        prev: '<li class="prev"><a href="javascript:;">上一页</a></li>',
+	        next: '<li class="next"><a href="javascript:;">下一页</a></li>',
+	        page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+	        onPageChange: function (num, type) {
+	           	
+	        }
+	    });
 
-	// baidu Map
-	function BaiduMap() {
-	    var map = new BMap.Map("map-wrap"); // 创建地图实例 
-	    var point = new BMap.Point(126.646749,45.729233); // 创建点坐标 
-	    map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别 
-
-	    map.addControl(new BMap.MapTypeControl());//添加地形控制器
-	    map.enableScrollWheelZoom();//设置鼠标滚轮缩放为启用
-
-	   	var markerData = [
-		   	[126.643963,45.730835,28,'蒙古栎'],
-			[126.644951,45.730313,1,'樟子松'],
-			[126.644089,45.730684,19,'紫丁香'],
-			[126.645167,45.730345,2,'红皮云杉'],
-			[126.644556,45.730546,18,'榆叶梅'],
-			[126.646141,45.729873,,'黑皮油松'],
-			[126.648189,45.729187,,'黑皮油松'],
-			[126.64633,45.729885,3,'白桦'],
-			[126.645526,45.730168,13,'暴马丁香'],
-			[126.646559,45.729898,,'复叶槭'],
-			[126.646105,45.729929,18,'榆叶梅'],
-			[126.647044,45.729649,13,'暴马丁香'],
-			[126.647561,45.729369,,'黑皮油松'],
-			[126.647808,45.729344,1,'樟子松'],
-			[126.647435,45.729536,18,'榆叶梅'],
-			[126.648113,45.729313,19,'紫丁香'],
-			[126.643828,45.730448,4,'家榆'],
-			[126.643913,45.730527,19,'紫丁香'],
-			[126.64518,45.730043,2,'红皮云杉'],
-			[126.644547,45.730285,2,'红皮云杉'],
-			[126.644039,45.730492,2,'红皮云杉'],
-			[126.645095,45.729999,19,'紫丁香'],
-			[126.644924,45.72969,19,'紫丁香'],
-			[126.644924,45.72969,19,'紫丁香'],
-			[126.645158,45.730055,24,'红松'],
-			[126.645077,45.729813,5,'旱柳'],
-			[126.644744,45.729357,5,'旱柳'],
-			[126.645436,45.72981,7,'水曲柳'],
-			[126.645068,45.729627,5,'旱柳'],
-			[126.64562,45.729753,,'黑皮油松'],
-			[126.645616,45.729675,18,'榆叶梅']
-			[126.645993,45.729775,13,'暴马丁香'],
-			[126.64589,45.729851,,'黑皮油松'],
-			[126.646554,45.729599,19,'紫丁香'],
-			[126.646559,45.729568,1,'樟子松'],
-			[126.64699,45.729385,41,'山梅花'],
-			[126.647062,45.729404,18,'榆叶梅'],
-			[126.648203,45.728982,5,'旱柳'],
-			[126.648203,45.728982,1,'樟子松'],
-			[126.647736,45.728964,3,'白桦'],
-			[126.647511,45.729052,17,'珍珠梅'],
-			[126.647754,45.728976,28,'蒙古栎'],
-			[126.647718,45.729014,19,'紫丁香'],
-			[126.646739,45.72846,34,'山楂'],
-			[126.646667,45.728366,2,'红皮云杉'],
-			[126.647188,45.728599,25,'兴安落叶松'],
-			[126.647322,45.728435,,'色木槭'],
-			[126.647206,45.728467,19,'紫丁香'],
-			[126.647152,45.72819,1,'樟子松'],
-			[126.64787,45.72836,13,'暴马丁香'],
-			[126.648086,45.728725,19,'紫丁香'],
-			[126.648409,45.728542,,'小叶杨'],
-			[126.648409,45.728542,5,'旱柳'],
-			[126.649955,45.728278,5,'旱柳'],
-			[126.64982,45.727982,19,'紫丁香'],
-			[126.648508,45.727831,26,'银中杨'],
-			[126.64858,45.728479,10,'稠李'],
-			[126.648499,45.728253,35,'山丁子'],
-			[126.648769,45.728158,38,'连翘'],
-			[126.649487,45.728171,18,'榆叶梅'],
-			[126.64602,45.72936,3,'白桦'],
-			[126.646155,45.729366,13,'暴马丁香'],
-			[126.646658,45.729178,4,'榆树'],
-			[126.646833,45.729124,13,'暴马丁香'],
-			[126.646923,45.728753,4,'家榆'],
-			[126.646689,45.728765,3,'白桦'],
-			[126.64642,45.728822,18,'榆叶梅'],
-			[126.645746,45.729222,4,'榆树球'],
-			[126.646038,45.728942,25,'落叶松'],
-			[45.728942,45.728728,3,'白桦'],
-			[126.646501,45.728558,3,'白桦'],
-			[126.646249,45.728665,2,'红皮云杉'],
-			[126.64571,45.728533,29,'紫椴'],
-			[126.646015,45.728287,29,'紫椴'],
-			[126.646105,45.728268,24,'红松'],
-			[126.646536,45.728086,2,'红皮云杉'],
-			[126.646572,45.727973,25,'兴安落叶松'],
-			[126.645072,45.728627,7,'水曲柳'],
-			[126.644911,45.728658,25,'兴安落叶松'],
-			[126.644551,45.72891,41,'山梅花'],
-			[126.644479,45.728413,5,'旱柳'],
-			[126.646608,45.727652,5,'旱柳'],
-			[126.646474,45.727545,1,'樟子松'],
-			[126.648288,45.727696,4,'家榆'],
-			[126.648082,45.727457,26,'银中杨'],
-			[126.647749,45.727029,2,'红皮云杉'],
-			[126.643922,45.728281,5,'旱柳'],
-			[126.64399,45.72813,19,'紫丁香'],
-			[126.643886,45.727774,26,'银中杨'],
-			[126.64633,45.726749,46,'毛樱桃'],
-	   	];
-	   	for (var i = 0, l = markerData.length; i < l; i++) {
-	        setTimeout((function (index) {
-	            return function () {
-	                var data = markerData[index]
-	                var marker = new BMap.Marker(new BMap.Point(data[0], data[1]))
-	                map.addOverlay(marker);
-	                marker.addEventListener('click', function () {
-	                    this.openInfoWindow(new BMap.InfoWindow('<a style="text-decoration: underline;" target="_blank" href="#">' + markerData[index][3] + '</a>'))
-	                })
-	            }
-	        })(i), i % l * 25)
-	    }
+	    
 	}
 
 	init();
@@ -11867,128 +11782,8 @@
 	}
 
 /***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * 机器人数据增删改查模块
-	 */
-	var UTIL = __webpack_require__(8);
-	var config = __webpack_require__(11);
-	var prefix = config.modalPrefix;
-
-	module.exports = {
-		getBotList: function(params){
-			var data = params.data || {};
-
-			UTIL.http({
-				url: prefix + '/botlist',
-				callback: function(ret){
-					params.callback && params.callback(ret);
-				}
-			});
-		},
-		getBot: function(params){
-			var data = params.data || {};
-
-			UTIL.http({
-				url: prefix + '/bot',
-				data: {botId: data.botId},
-				callback: params.callback
-			});
-		},
-		addBot: function(params){
-			var data = params.data || {};
-			UTIL.http({
-				type: 'post',
-				url: prefix + '/addbot',
-				contentType: 'application/json;charset=UTF-8',
-				data: JSON.stringify(data),
-				callback: params.callback
-			});
-		},
-		delBot: function(params){
-			var data = params.data || {};
-			UTIL.http({
-				type: 'post',
-				url: prefix + '/delbot',
-				data: data,
-				callback: params.callback
-			});
-		},
-		getBotCategory: function(params){
-			var data = params.data || {};
-
-			function formateList(list, item){
-				var flist = item &&[item] || [];
-				for (var i = 0, it; it = list[i]; i++) {
-					flist.push({
-						text: it.name,
-						value: it.id
-					});
-				}
-				return flist;
-			}
-
-			UTIL.http({
-				url: prefix + '/botcategory',
-				data: data,
-				callback: function(ret){
-					if (ret && ret.code == 0) {
-						var dataList = ret.data && ret.data.list;
-						var categoryList = formateList(dataList, {text: '请选择分类...', value: -1});
-						var subCategoryMap = {'-1': {text: '请选择子分类...', value: -1}};
-
-						for (var i = 0, item; item = dataList[i]; i++){
-							subCategoryMap[item.id] = formateList(item.subCategories, {text: '请选择子分类...', value: -1});
-						}
-
-						params && params.callback({
-							code: 0,
-							data: {
-								categoryList: categoryList,
-								subCategoryMap: subCategoryMap
-							}
-						});
-					}
-				}
-			});
-		},
-		updateBot: function(params){
-			var data = params.data || {};
-			UTIL.http({
-				type: 'post',
-				contentType: 'application/json;charset=UTF-8',
-				url: prefix + '/updatebot',
-				data: JSON.stringify(data),
-				callback: params.callback
-			});
-		},
-		submitBot: function(params){
-			UTIL.http({
-				url: prefix + '/verifybot',
-				data: params.data,
-				callback: params.callback
-			});
-		},
-		checkName: function(params){
-			UTIL.http({
-				url: prefix + '/checkbotname',
-				data: params.data,
-				callback: params.callback
-			});
-		}
-	};
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		modalPrefix: 'http://127.0.0.1:80/data'
-	};
-
-/***/ },
+/* 10 */,
+/* 11 */,
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -14503,380 +14298,414 @@
 	};
 
 /***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 23 */,
 /* 24 */,
-/* 25 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 25 */,
 /* 26 */,
 /* 27 */,
-/* 28 */
+/* 28 */,
+/* 29 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 30 */,
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {/**
-	*
-	Date: 2015-12-01
-	Author: hishion
-	email: hishion@outlook.com
-	example:
-	    //--------- js
-	    $('.hiSlider').hiSlider();
-	    //--------- html
-	    <div class="hiSlider">
-	        <div class="hiSlider-item" data-title="00">0</div>
-	        <div class="hiSlider-item" data-title="11">1</div>
-	        <div class="hiSlider-item" data-title="22">2</div>
-	        <div class="hiSlider-item" data-title="33">3</div>
-	    </div>
+	/* WEBPACK VAR INJECTION */(function($) {/*
+	 * 支持jQuery API调用和模块化调用两种
+	 * @example
+	 * $('select').selectMatch();
+	 * or
+	 * Select($('select'))
 	*/
+	$.fn.selectMatch = function(options) {
+	    // 常量变量
+	    var SELECT = 'select', SELECTED = 'selected', DISABLED = 'disabled',  ACTIVE = 'active', REVERSE = 'reverse';
 
+	    // 默认参数
+	    var defaults = {
+	        prefix: 'ui_',    // 一些UI样式类名的前缀
+	        trigger: ['change']     // 触发原始下拉框的事件，默认只触发change事件
+	    };
+	    // 参数合并
+	    var params = $.extend({}, defaults, options || {});
 
-	function Slider($container, options){
-	    this.$container = $container;
-	    this.options = $.extend({
-	        //开始索引 0开始
-	        startSlide: 0,
-	        //子元素选择器
-	        item: '.hiSlider-item',
-	        //是否全屏
-	        isFullScreen: false,
-	        //是否自适应
-	        isFlexible: false,
-	        //是否支持触摸 html5 transform:
-	        isSupportTouch: '__proto__' in {},
-	        //是否显示分页按钮
-	        isShowPage: true,
-	        //是否显示标题栏
-	        isShowTitle: true,
-	        //标题文本存放的属性 或者回调函数(需要返回值)
-	        titleAttr: 'data-title',
-	        //是否显示左右控制按钮
-	        isShowControls: true,
-	        //是否自动播放
-	        isAuto: true,
-	        //自动播放间隔时间
-	        intervalTime: 5000,
-	        //特效时间 
-	        affectTime: 300,
-	        //特效类型 string : fade || move
-	        mode: 'move',
-	        //方向 string: left || top
-	        direction: 'left',
-	        //开始滑动回调
-	        onSwipeStart: $.noop,
-	        //滑动中回调
-	        onSwipeMove: $.noop,
-	        //正常滑动的最小值
-	        minSwipeLength: 30,
-	        //滑动取消回调 和 minSwipeLength值有关
-	        onSwipeCancel: $.noop,
-	        //触摸结束回调 (正常触摸)
-	        onSwipeEnd: $.noop,
-	        //向左滑动回调
-	        onSwipeLeft: $.noop,
-	        //向右滑动回调
-	        onSwipeRight: $.noop,
-	        //向上滑动回调
-	        onSwipeTop: $.noop,
-	        //向下滑动回调
-	        onSwipeBottom: $.noop,
-	        //初始化后回调
-	        onInited:  $.noop,
-	        //运动前回调
-	        onMoveBefore: $.noop,
-	        //运动后回调
-	        onMoveAfter: $.noop,
-	        //分页选中回调
-	        onSelected: $.noop
-	    }, options);
-	    this.init();
-	}
+	    // 通用前缀
+	    var PREFIX = params.prefix + SELECT, joiner = params.prefix.replace(/[a-z]/gi, '');
 
-	Slider.prototype = {
-	    init: function(){
-	        this.$item    = this.$container.find(this.options.item);
-	        this.size     = this.$item.size();
-	        this.curIndex = this.options.startSlide;
-	        this.setLayout();
-	        this.playTimer = null;
-	        this.options.isAuto && this.autoPlay();
-	        this.options.isFlexible && $(window).on('resize.hiSlider', $.proxy(this, 'resize'));
-	        this.options.isSupportTouch && this.touch();
-	    },
-	    touch: function(){
-	        var self  = this;
-	        var touch = {};
-	        var opt   = this.options;
-	        var min   = opt.minSwipeLength;
-	        this.$container.on('touchstart', function(e){
-	            var touches = e.originalEvent.touches[0];
-	            touch.x1 = touches.pageX;
-	            touch.y1 = touches.pageY;
-	            opt.onSwipeStart.call(this, touch);
-	        }).on('touchmove', function(e){
-	            var touches = e.originalEvent.touches[0];
-	            touch.x2 = touches.pageX;
-	            touch.y2 = touches.pageY;
-	            opt.onSwipeMove.call(this, touch);
-	        }).on('touchend', function(e){
-	            if((touch.x2 && Math.abs(touch.x1 - touch.x2) > min) ||
-	             (touch.y2 && Math.abs(touch.y1 - touch.y2) > min)){
-	                var dir = self.swipeDirection(touch.x1, touch.x2, touch.y1, touch.y2);
-	                opt['onSwipe'+dir].call(this, touch);
-	                self.moveTo(dir);
-	                opt.onSwipeEnd.call(this, touch);
-	            }else{
-	                opt.onSwipeCancel.call(this, touch);
+	    // 根据下拉框获得相关数据的私有方法
+	    var _get = function(el) {
+	        var selectedIndex = 0, htmlOptions = '';
+
+	        // 遍历下拉框的options选项
+	        el.find('option').each(function(index) {
+	            var arrCl = [PREFIX + joiner + 'datalist'+ joiner +'li', this.className];
+
+	            if (this[SELECTED]) {
+	                selectedIndex = this.value;
+	                arrCl.push(SELECTED);
 	            }
-	            touch = {};
+	            if (this[DISABLED]) {
+	                arrCl.push(DISABLED);
+	            }
+
+	            htmlOptions = htmlOptions + '<li class="'+ arrCl.join(' ') +'" data-index='+ this.value +'>'+ this.innerHTML +'</li>'; // 修改成对应value值
 	        });
-	    },
-	    moveTo: function(dir){
-	        var self      = this;
-	        var direction = self.options.direction;
-	        if(direction == 'top'){
-	            if(dir == 'Bottom'){
-	                self[self.options.mode+'Prev']();
-	            }else if(dir == 'Top'){
-	                self[self.options.mode]();
-	            }
-	        }else if(direction == 'left'){
-	            if(dir == 'Right'){
-	                self[self.options.mode+'Prev']();
-	            }else if(dir == 'Left'){
-	                self[self.options.mode]();
-	            }
-	        }
-	    },
-	    swipeDirection: function (x1, x2, y1, y2){
-	        var xDelta = Math.abs(x1 - x2), yDelta = Math.abs(y1 - y2)
-	        return xDelta >= yDelta ? (x1 - x2 > 0 ? 'Left' : 'Right') : (y1 - y2 > 0 ? 'Top' : 'Bottom')
-	    },
-	    move: function(){
-	        var self = this, cidx;
-	        self.options.isAuto && self.autoPlay();
-	        if(++self.curIndex == self.size){
-	            self.curIndex = 0;
-	            self.$container.css(self.getMove());
-	            self.curIndex++;
-	        }
-	        self.setTitle();
-	        self.setPages();
-	        cidx = self.curIndex == self.size - 1 ? 0 : self.curIndex;
-	        self.options.onMoveBefore.call(self.$container, self.$item, cidx);
-	        self.$container.stop(false, true).animate(self.getMove(), self.options.affectTime, function(){
-	            self.options.onMoveAfter.call(this, self.$item, cidx)
-	        });
-	    },
-	    movePrev: function(flag){
-	        var self = this;
-	        if(flag != true){
-	            if(self.options.mode == 'move'){
-	                if(self.curIndex == 0){
-	                    self.curIndex = (self.size - 1);
-	                    self.$container.css(self.getMove());
-	                }
-	            }else{
-	                (self.curIndex == 0) && (self.curIndex = self.size);
-	            }
-	            self.curIndex--;
-	        }
-	        self.options.isAuto && self.autoPlay();
-	        self.setTitle();
-	        self.setPages();
-	        self.options.onMoveBefore.call(self.$container, self.$item, self.curIndex);
-	        self.$container.stop(false, true).animate(self.getMove(), self.options.affectTime, function(){
-	            self.options.onMoveAfter.call(this, self.$item, self.curIndex)
-	        });
-	    },
-	    getMove: function(flag){
-	        var move = {};
-	        var size = this.getSize();
-	        var dir  = this.options.direction;
-	        if(dir == 'top'){
-	            move.top  = -this.curIndex*size.height;
-	            flag && (move.width = size.width);
-	        }else{
-	            move.left = -this.curIndex*size.width;
-	            flag && (move.height = size.height);
-	        }
-	        return move;
-	    },
-	    fade: function(){
-	        var self = this;
-	        self.options.isAuto && self.autoPlay();
-	        self.curIndex++;
-	        (self.curIndex > self.size - 1) && (self.curIndex = 0);
-	        self.setTitle();
-	        self.setPages();
-	        self.options.onMoveBefore.call(self.$container, self.$item, self.curIndex);
-	        self.$item.fadeOut(self.options.affectTime)
-	        .eq(self.curIndex).fadeIn(self.options.affectTime, function(){
-	            self.options.onMoveAfter.call(this, self.$item, self.curIndex)
-	        });
-	    },
-	    fadePrev: function(flag){
-	        var self = this;
-	        if(flag != true){
-	            if(self.options.mode == 'move'){
-	                if(self.curIndex == 0){
-	                    self.curIndex = (self.size - 1);
-	                    self.$container.css(self.getMove());
-	                }
-	            }else{
-	                if(self.curIndex == 0){
-	                    self.curIndex = self.size;
-	                }
-	            }
-	            self.curIndex--;
-	        }
-	        self.options.isAuto && self.autoPlay();
-	        self.setTitle();
-	        self.setPages();
-	        self.options.onMoveBefore.call(self.$container, self.$item, self.curIndex);
-	        self.$item.fadeOut(self.options.affectTime)
-	        .eq(self.curIndex).fadeIn(self.options.affectTime, function(){
-	            self.options.onMoveAfter.call(this, self.$item, self.curIndex)
-	        });
-	    },
-	    setPages: function(){
-	        if(!this.options.isShowPage || !this.$pages)return;
-	        var idx = this.curIndex;
-	        (idx == this.size - 1 && this.options.mode == 'move')  && (idx = 0);
-	        $('a', this.$pages).eq(idx).addClass('active').siblings().removeClass('active');
-	    },
-	    setTitle: function(){
-	        if(!this.options.isShowTitle || !this.$title)return;
-	        var $curItem = this.$item.eq(this.curIndex);
-	        this.$title.html($.isFunction(this.options.titleAttr) ? this.options.titleAttr.call($curItem, this.curIndex) : $curItem.attr(this.options.titleAttr) );
-	    },
-	    setLayout: function(){
-	        var opt = this.options;
-	        var css = this.getSetCss();
-	        this.$item.css(css.item)
-	        this.$container.css(css.container).wrap('<div class="hiSlider-wrap"/>');
-	        this.$wrap = this.$container.parent();
-	        this.$wrap.css(css.wrap);
-	        if(this.options.isShowTitle){
-	            this.$title = $('<div class="hiSlider-title"/>').insertAfter(this.$container);
-	            this.setTitle();
-	        }
-	        if(this.options.isShowPage){
-	            this.$pages = $('<div class="hiSlider-pages">'+this.getPages()+'</div>').insertAfter(this.$container);
-	            this.pagesSwitch();
-	        }
-	        if(this.options.isShowControls){
-	            this.$prev = $('<a href="javascript:;" class="hiSlider-btn-prev">prev</a>');
-	            this.$next = $('<a href="javascript:;" class="hiSlider-btn-next">next</a>');
-	            this.$container.after(this.$prev.add(this.$next));
-	            this.controlsSwitch();
-	        }
-	        if(this.options.mode == 'move'){
-	            this.$container.append(this.$item.eq(0).clone().addClass('item-clone'));
-	            this.$item = this.$container.find(this.options.item);
-	            this.size  = this.$item.size();
-	        }else{
-	            this.setFade();
-	        }
-	        this.options.onInited.call(this.$container, this.$item, this.options.startSlide);
-	    },
-	    resize: function(){
-	        var timer, self = this;
-	        clearTimeout(timer);
-	        timer = setTimeout(function(){
-	            self.$wrap.add(self.$item).css(self.getSize(self.options.direction));
-	            self.$container.css(self.getMove(true));
-	        }, 300);
-	    },
-	    setFade: function(){
-	        this.$item.hide().eq(this.curIndex).show();
-	    },
-	    getSetCss: function(){
-	        var size  = this.getSize(), css = {};
-	        var start = Math.min(this.options.startSlide, this.size);
-	        if(this.options.mode == 'fade'){
-	            size.position = 'absolute';
-	            css.height = size.height;
-	            css.width = size.width;
-	        }else{
-	            if(this.options.direction == 'top'){
-	                css.height = (this.size+1)*100 + '%';
-	                css.width = size.width;
-	                css.top = -(start*size.height);
-	            }else{
-	                css.height = size.height;
-	                css.width = (this.size+1)*100 + '%';
-	                css.left = -(start*size.width);
-	                size.float = 'left';
-	            }
-	            css.position = 'relative';
-	        }
+
 	        return {
-	            item: size,
-	            container: css,
-	            wrap: {'overflow': 'hidden', 'position': 'relative', 'width': size.width, 'height': size.height}
+	            index: selectedIndex,
+	            html: htmlOptions
 	        }
-	    },
-	    autoPlay: function(){
-	        var self = this;
-	        if(this.$item.length <= 1)return;
-	        clearTimeout(self.playTimer);
-	        self.playTimer = setTimeout($.proxy(self, self.options.mode), self.options.intervalTime);
-	    },
-	    controlsSwitch: function(){
-	        var self = this;
-	        this.$next.on('click', $.proxy(self, self.options.mode));
-	        this.$prev.on('click', $.proxy(self, self.options.mode+'Prev'));
-	    },
-	    pagesSwitch: function(){
-	        if(!this.options.isShowPage || !this.$pages)return;
-	        var self = this;
-	        $('a', this.$pages).on('click', function(){
-	            if($(this).hasClass('active'))return;
-	            self.curIndex = $(this).index();
-	            self.options.onSelected.call(this, self.curIndex);
-	            self[self.options.mode+'Prev'](true);
-	        })
-	    },
-	    getPages: function(){
-	        var arr      = [];
-	        var curIndex = this.curIndex;
-	        $(this.$item).each(function(idx){
-	            var cls = idx == curIndex ? 'class="active"' : '';
-	            arr.push('<a href="javascript:;" '+cls+'>'+(idx+1)+'</a>');
-	        });
-	        return arr.join('');
-	    },
-	    getSize: function(){
-	        var $elem = this.$item.eq(0), size;
-	        if(this.options.isFullScreen){
-	            size = {width: $(window).width(), height: $(window).height()}
-	        }else{
-	            if(this.options.isFlexible){
-	                var $elem = this.$wrap ? this.$wrap.parent() : this.$container.parent();
-	                size = this.options.direction == 'top' ? {height: $elem.height()} : {width: $elem.width()}
-	            }
-	        }
-	        return size || {width: $elem.width(), height: $elem.height()}
 	    }
-	}
 
-	$.fn.hiSlider = function(options){
-	    this.each(function(){
-	        $(this).data('mr.slider', new Slider($(this), options));
+	    return $(this).each(function(index, element) {
+	        var sel = $(this).hide().data(SELECT);
+	        if (!sel) {
+	            // 如果没有关联的模拟下拉元素生成
+	            // 创建新的模拟下拉元素
+	            sel = $('<div></div>').on('click', 'a', function() {
+	                if ($(element).prop(DISABLED)) return false;
+	                // 显示与隐藏
+	                sel.toggleClass(ACTIVE);
+	                // 边界判断
+	                if (sel.hasClass(ACTIVE)) {
+	                    var ul = sel.find('ul'),
+	                    overflow = ul.offset().top + ul.outerHeight() > Math.max($(document.body).height(), $(window).height());
+	                    sel[overflow? 'addClass': 'removeClass'](REVERSE);
+
+	                    // 滚动与定位
+	                    var arrData = sel.data('scrollTop'), selected = ul.find('.' + SELECTED);
+	                    // 严格验证
+	                    if (arrData && arrData[1] == selected.attr('data-index') && arrData[2] == selected.text()) {
+	                        ul.scrollTop(arrData[0]);
+	                        // 重置
+	                        sel.removeData('scrollTop');
+	                    }
+	                } else {
+	                    sel.removeClass(REVERSE);
+	                }
+	            })
+	            // 存储对象
+	            $(this).data(SELECT, sel);
+	            // 载入元素
+	            $(this).after(sel);
+
+	            // 点击页面空白要隐藏
+	            $(document).mouseup(function(event) {
+	                var target = event.target;
+	                if (target && sel.hasClass(ACTIVE) && sel.get(0) !== target && sel.get(0).contains(target) == false) {
+	                    sel.removeClass(ACTIVE).removeClass(REVERSE);
+	                }
+	            });
+	        }
+
+	        // 根据当前下拉元素，重新刷新
+	        // 0. 获得我们需要的一些数据
+	        var data = _get($(this)), option = $(this).find('option[value='+data.index+']');
+	        // 1. 与select元素匹配的类名, 以及宽度
+	        sel.attr('class', element.className + ' ' + PREFIX).width($(this).outerWidth());
+	        // 2. 全新的按钮元素
+	        var button = '<a href="javascript:void(0);" class="'+ PREFIX + joiner + 'button">'+
+	            '<span class="'+ PREFIX + joiner + 'text">' + option.html() + '</span>'+
+	            '<i class="'+ PREFIX + joiner + 'icon"></i></a>';
+	        // 3. 全新的列表
+	        var datalist = '<ul class="'+ PREFIX + joiner + 'datalist">'+ data.html +'</ul>';
+
+	        // 4. 刷新
+	        sel.html(button + datalist);
 	    });
-	    return this;
-	}
+	};
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(jQuery) {(function ($) {
+	    'use strict';
+
+	    $.jqPaginator = function (el, options) {
+	        if(!(this instanceof $.jqPaginator)){
+	            return new $.jqPaginator(el, options);
+	        }
+
+	        var self = this;
+
+	        self.$container = $(el);
+
+	        self.$container.data('jqPaginator', self);
+
+	        self.init = function () {
+
+	            if (options.first || options.prev || options.next || options.last || options.page) {
+	                options = $.extend({}, {
+	                    first: '',
+	                    prev: '',
+	                    next: '',
+	                    last: '',
+	                    page: ''
+	                }, options);
+	            }
+
+	            self.options = $.extend({}, $.jqPaginator.defaultOptions, options);
+
+	            self.verify();
+
+	            self.extendJquery();
+
+	            self.render();
+
+	            self.fireEvent(this.options.currentPage, 'init');
+	        };
+
+	        self.verify = function () {
+	            var opts = self.options;
+
+	            if (!self.isNumber(opts.totalPages)) {
+	                throw new Error('[jqPaginator] type error: totalPages');
+	            }
+
+	            if (!self.isNumber(opts.totalCounts)) {
+	                throw new Error('[jqPaginator] type error: totalCounts');
+	            }
+
+	            if (!self.isNumber(opts.pageSize)) {
+	                throw new Error('[jqPaginator] type error: pageSize');
+	            }
+
+	            if (!self.isNumber(opts.currentPage)) {
+	                throw new Error('[jqPaginator] type error: currentPage');
+	            }
+
+	            if (!self.isNumber(opts.visiblePages)) {
+	                throw new Error('[jqPaginator] type error: visiblePages');
+	            }
+
+	            if (!opts.totalPages && !opts.totalCounts) {
+	                throw new Error('[jqPaginator] totalCounts or totalPages is required');
+	            }
+
+	            if (!opts.totalPages && !opts.totalCounts) {
+	                throw new Error('[jqPaginator] totalCounts or totalPages is required');
+	            }
+
+	            if (!opts.totalPages && opts.totalCounts && !opts.pageSize) {
+	                throw new Error('[jqPaginator] pageSize is required');
+	            }
+
+	            if (opts.totalCounts && opts.pageSize) {
+	                opts.totalPages = Math.ceil(opts.totalCounts / opts.pageSize);
+	            }
+
+	            if (opts.currentPage < 1 || opts.currentPage > opts.totalPages) {
+	                throw new Error('[jqPaginator] currentPage is incorrect');
+	            }
+
+	            if (opts.totalPages < 1) {
+	                throw new Error('[jqPaginator] totalPages cannot be less currentPage');
+	            }
+	        };
+
+	        self.extendJquery = function () {
+	            $.fn.jqPaginatorHTML = function (s) {
+	                return s ? this.before(s).remove() : $('<p>').append(this.eq(0).clone()).html();
+	            };
+	        };
+
+	        self.render = function () {
+	            self.renderHtml();
+	            self.setStatus();
+	            self.bindEvents();
+	        };
+
+	        self.renderHtml = function () {
+	            var html = [];
+
+	            var pages = self.getPages();
+	            for (var i = 0, j = pages.length; i < j; i++) {
+	                html.push(self.buildItem('page', pages[i]));
+	            }
+
+	            self.isEnable('prev') && html.unshift(self.buildItem('prev', self.options.currentPage - 1));
+	            self.isEnable('first') && html.unshift(self.buildItem('first', 1));
+	            self.isEnable('statistics') && html.unshift(self.buildItem('statistics'));
+	            self.isEnable('next') && html.push(self.buildItem('next', self.options.currentPage + 1));
+	            self.isEnable('last') && html.push(self.buildItem('last', self.options.totalPages));
+
+	            if (self.options.wrapper) {
+	                self.$container.html($(self.options.wrapper).html(html.join('')).jqPaginatorHTML());
+	            } else {
+	                self.$container.html(html.join(''));
+	            }
+	        };
+
+	        self.buildItem = function (type, pageData) {
+	            var html = self.options[type]
+	                .replace(/{{page}}/g, pageData)
+	                .replace(/{{totalPages}}/g, self.options.totalPages)
+	                .replace(/{{totalCounts}}/g, self.options.totalCounts);
+
+	            return $(html).attr({
+	                'jp-role': type,
+	                'jp-data': pageData
+	            }).jqPaginatorHTML();
+	        };
+
+	        self.setStatus = function () {
+	            var options = self.options;
+
+	            if (!self.isEnable('first') || options.currentPage === 1) {
+	                $('[jp-role=first]', self.$container).addClass(options.disableClass);
+	            }
+	            if (!self.isEnable('prev') || options.currentPage === 1) {
+	                $('[jp-role=prev]', self.$container).addClass(options.disableClass);
+	            }
+	            if (!self.isEnable('next') || options.currentPage >= options.totalPages) {
+	                $('[jp-role=next]', self.$container).addClass(options.disableClass);
+	            }
+	            if (!self.isEnable('last') || options.currentPage >= options.totalPages) {
+	                $('[jp-role=last]', self.$container).addClass(options.disableClass);
+	            }
+
+	            $('[jp-role=page]', self.$container).removeClass(options.activeClass);
+	            $('[jp-role=page][jp-data=' + options.currentPage + ']', self.$container).addClass(options.activeClass);
+	        };
+
+	        self.getPages = function () {
+	            var pages = [],
+	                visiblePages = self.options.visiblePages,
+	                currentPage = self.options.currentPage,
+	                totalPages = self.options.totalPages;
+
+	            if (visiblePages > totalPages) {
+	                visiblePages = totalPages;
+	            }
+
+	            var half = Math.floor(visiblePages / 2);
+	            var start = currentPage - half + 1 - visiblePages % 2;
+	            var end = currentPage + half;
+
+	            if (start < 1) {
+	                start = 1;
+	                end = visiblePages;
+	            }
+	            if (end > totalPages) {
+	                end = totalPages;
+	                start = 1 + totalPages - visiblePages;
+	            }
+
+	            var itPage = start;
+	            while (itPage <= end) {
+	                pages.push(itPage);
+	                itPage++;
+	            }
+
+	            return pages;
+	        };
+
+	        self.isNumber = function (value) {
+	            var type = typeof value;
+	            return type === 'number' || type === 'undefined';
+	        };
+
+	        self.isEnable = function (type) {
+	            return self.options[type] && typeof self.options[type] === 'string';
+	        };
+
+	        self.switchPage = function (pageIndex) {
+	            self.options.currentPage = pageIndex;
+	            self.render();
+	        };
+
+	        self.fireEvent = function (pageIndex, type) {
+	            return (typeof self.options.onPageChange !== 'function') || (self.options.onPageChange(pageIndex, type) !== false);
+	        };
+
+	        self.callMethod = function (method, options) {
+	            switch (method) {
+	                case 'option':
+	                    self.options = $.extend({}, self.options, options);
+	                    self.verify();
+	                    self.render();
+	                    break;
+	                case 'destroy':
+	                    self.$container.empty();
+	                    self.$container.removeData('jqPaginator');
+	                    break;
+	                default :
+	                    throw new Error('[jqPaginator] method "' + method + '" does not exist');
+	            }
+
+	            return self.$container;
+	        };
+
+	        self.bindEvents = function () {
+	            var opts = self.options;
+
+	            self.$container.off();
+	            self.$container.on('click', '[jp-role]', function () {
+	                var $el = $(this);
+	                if ($el.hasClass(opts.disableClass) || $el.hasClass(opts.activeClass)) {
+	                    return;
+	                }
+
+	                var pageIndex = +$el.attr('jp-data');
+	                if (self.fireEvent(pageIndex, 'change')) {
+	                    self.switchPage(pageIndex);
+	                }
+	            });
+	        };
+
+	        self.init();
+
+	        return self.$container;
+	    };
+
+	    $.jqPaginator.defaultOptions = {
+	        wrapper: '',
+	        first: '<li class="first"><a href="javascript:;">First</a></li>',
+	        prev: '<li class="prev"><a href="javascript:;">Previous</a></li>',
+	        next: '<li class="next"><a href="javascript:;">Next</a></li>',
+	        last: '<li class="last"><a href="javascript:;">Last</a></li>',
+	        page: '<li class="page"><a href="javascript:;">{{page}}</a></li>',
+	        totalPages: 0,
+	        totalCounts: 0,
+	        pageSize: 0,
+	        currentPage: 1,
+	        visiblePages: 7,
+	        disableClass: 'disabled',
+	        activeClass: 'active',
+	        onPageChange: null
+	    };
+
+	    $.fn.jqPaginator = function () {
+	        var self = this,
+	            args = Array.prototype.slice.call(arguments);
+
+	        if (typeof args[0] === 'string') {
+	            var $instance = $(self).data('jqPaginator');
+	            if (!$instance) {
+	                throw new Error('[jqPaginator] the element is not instantiated');
+	            } else {
+	                return $instance.callMethod(args[0], args[1]);
+	            }
+	        } else {
+	            return new $.jqPaginator(this, args[0]);
+	        }
+	    };
+
+	})(jQuery);
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	
 
 /***/ }
 /******/ ]);

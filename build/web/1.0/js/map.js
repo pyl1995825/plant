@@ -44,24 +44,142 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(27);
+	__webpack_require__(34);
 
-	var $ = __webpack_require__(10);
+	var $ = __webpack_require__(7);
 
-	var Util = __webpack_require__(12);
-	var QuickTypeModal = __webpack_require__(14);
-	var EntityModal = __webpack_require__(14);
+	var Util = __webpack_require__(8);
+	var QuickTypeModal = __webpack_require__(10);
+	var EntityModal = __webpack_require__(10);
 	// var listContainer = $('.jlistcontainer');
 	// var editContainer = $('.jeditcontainer');
 	// var emptyContainer = $('.jemptyquick');
-	var Common = __webpack_require__(13);
+	var Common = __webpack_require__(9);
 
-	var XTemplate = __webpack_require__(16);
-	var xTemplate = __webpack_require__(22);
+	var XTemplate = __webpack_require__(12);
+	var xTemplate = __webpack_require__(18);
 	// var qtListTpl = require('../../tpl/main/map.xtpl');
 
 	function init() {
 
+		// 导航栏初始化
+		Common.initSideBar();
+
+		BaiduMap();
+	}
+
+	function BaiduMap() {
+	    var map = new BMap.Map("plant-map"); // 创建地图实例 
+	    var point = new BMap.Point(126.646749,45.729233); // 创建点坐标 
+	    map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别 
+
+	    map.addControl(new BMap.MapTypeControl());//添加地形控制器
+	    map.enableScrollWheelZoom();//设置鼠标滚轮缩放为启用
+
+	   	var markerData = [
+		   	[126.643963,45.730835,28,'蒙古栎'],
+			[126.644951,45.730313,1,'樟子松'],
+			[126.644089,45.730684,19,'紫丁香'],
+			[126.645167,45.730345,2,'红皮云杉'],
+			[126.644556,45.730546,18,'榆叶梅'],
+			[126.646141,45.729873,,'黑皮油松'],
+			[126.648189,45.729187,,'黑皮油松'],
+			[126.64633,45.729885,3,'白桦'],
+			[126.645526,45.730168,13,'暴马丁香'],
+			[126.646559,45.729898,,'复叶槭'],
+			[126.646105,45.729929,18,'榆叶梅'],
+			[126.647044,45.729649,13,'暴马丁香'],
+			[126.647561,45.729369,,'黑皮油松'],
+			[126.647808,45.729344,1,'樟子松'],
+			[126.647435,45.729536,18,'榆叶梅'],
+			[126.648113,45.729313,19,'紫丁香'],
+			[126.643828,45.730448,4,'家榆'],
+			[126.643913,45.730527,19,'紫丁香'],
+			[126.64518,45.730043,2,'红皮云杉'],
+			[126.644547,45.730285,2,'红皮云杉'],
+			[126.644039,45.730492,2,'红皮云杉'],
+			[126.645095,45.729999,19,'紫丁香'],
+			[126.644924,45.72969,19,'紫丁香'],
+			[126.644924,45.72969,19,'紫丁香'],
+			[126.645158,45.730055,24,'红松'],
+			[126.645077,45.729813,5,'旱柳'],
+			[126.644744,45.729357,5,'旱柳'],
+			[126.645436,45.72981,7,'水曲柳'],
+			[126.645068,45.729627,5,'旱柳'],
+			[126.64562,45.729753,,'黑皮油松'],
+			[126.645616,45.729675,18,'榆叶梅']
+			[126.645993,45.729775,13,'暴马丁香'],
+			[126.64589,45.729851,,'黑皮油松'],
+			[126.646554,45.729599,19,'紫丁香'],
+			[126.646559,45.729568,1,'樟子松'],
+			[126.64699,45.729385,41,'山梅花'],
+			[126.647062,45.729404,18,'榆叶梅'],
+			[126.648203,45.728982,5,'旱柳'],
+			[126.648203,45.728982,1,'樟子松'],
+			[126.647736,45.728964,3,'白桦'],
+			[126.647511,45.729052,17,'珍珠梅'],
+			[126.647754,45.728976,28,'蒙古栎'],
+			[126.647718,45.729014,19,'紫丁香'],
+			[126.646739,45.72846,34,'山楂'],
+			[126.646667,45.728366,2,'红皮云杉'],
+			[126.647188,45.728599,25,'兴安落叶松'],
+			[126.647322,45.728435,,'色木槭'],
+			[126.647206,45.728467,19,'紫丁香'],
+			[126.647152,45.72819,1,'樟子松'],
+			[126.64787,45.72836,13,'暴马丁香'],
+			[126.648086,45.728725,19,'紫丁香'],
+			[126.648409,45.728542,,'小叶杨'],
+			[126.648409,45.728542,5,'旱柳'],
+			[126.649955,45.728278,5,'旱柳'],
+			[126.64982,45.727982,19,'紫丁香'],
+			[126.648508,45.727831,26,'银中杨'],
+			[126.64858,45.728479,10,'稠李'],
+			[126.648499,45.728253,35,'山丁子'],
+			[126.648769,45.728158,38,'连翘'],
+			[126.649487,45.728171,18,'榆叶梅'],
+			[126.64602,45.72936,3,'白桦'],
+			[126.646155,45.729366,13,'暴马丁香'],
+			[126.646658,45.729178,4,'榆树'],
+			[126.646833,45.729124,13,'暴马丁香'],
+			[126.646923,45.728753,4,'家榆'],
+			[126.646689,45.728765,3,'白桦'],
+			[126.64642,45.728822,18,'榆叶梅'],
+			[126.645746,45.729222,4,'榆树球'],
+			[126.646038,45.728942,25,'落叶松'],
+			[45.728942,45.728728,3,'白桦'],
+			[126.646501,45.728558,3,'白桦'],
+			[126.646249,45.728665,2,'红皮云杉'],
+			[126.64571,45.728533,29,'紫椴'],
+			[126.646015,45.728287,29,'紫椴'],
+			[126.646105,45.728268,24,'红松'],
+			[126.646536,45.728086,2,'红皮云杉'],
+			[126.646572,45.727973,25,'兴安落叶松'],
+			[126.645072,45.728627,7,'水曲柳'],
+			[126.644911,45.728658,25,'兴安落叶松'],
+			[126.644551,45.72891,41,'山梅花'],
+			[126.644479,45.728413,5,'旱柳'],
+			[126.646608,45.727652,5,'旱柳'],
+			[126.646474,45.727545,1,'樟子松'],
+			[126.648288,45.727696,4,'家榆'],
+			[126.648082,45.727457,26,'银中杨'],
+			[126.647749,45.727029,2,'红皮云杉'],
+			[126.643922,45.728281,5,'旱柳'],
+			[126.64399,45.72813,19,'紫丁香'],
+			[126.643886,45.727774,26,'银中杨'],
+			[126.64633,45.726749,46,'毛樱桃'],
+	   	];
+	   	for (var i = 0, l = markerData.length; i < l; i++) {
+	        setTimeout((function (index) {
+	            return function () {
+	                var data = markerData[index]
+	                var marker = new BMap.Marker(new BMap.Point(data[0], data[1]))
+	                map.addOverlay(marker);
+	                marker.addEventListener('click', function () {
+	                    this.openInfoWindow(new BMap.InfoWindow('<a style="text-decoration: underline;" target="_blank" href="#">' + markerData[index][3] + '</a>'))
+	                })
+	            }
+	        })(i), i % l * 25)
+	    }
 	}
 
 	init();
@@ -74,10 +192,7 @@
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -11091,13 +11206,12 @@
 
 
 /***/ },
-/* 11 */,
-/* 12 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(10);
+	var $ = __webpack_require__(7);
 
-	var Common = __webpack_require__(13);
+	var Common = __webpack_require__(9);
 
 	var observeQueue = {};
 
@@ -11246,32 +11360,18 @@
 	};
 
 /***/ },
-/* 13 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(10);
+	var $ = __webpack_require__(7);
 
-	var Util = __webpack_require__(12);
+	var Util = __webpack_require__(8);
 
-	var pageNameMap = {
-		BOT: 0,
-		BOTINFO: 1,
-		ENTITY: 2,
-		INTENT: 3,
-		QUICKTYPE: 4,
-		CARDNORMAL: 5,
-		CARDINFO: 6,
-		QA: 7
-	};
 	var pageUrlMap = {
-		0: 'http://http://182.254.129.209:8080/bot',
-		1: 'http://http://182.254.129.209:8080/bot/info?bid={%botId}',
-		2: 'http://http://182.254.129.209:8080/bot/entity?bid={%botId}',
-		3: 'http://http://182.254.129.209:8080/bot/intent?bid={%botId}',
-		4: 'http://http://182.254.129.209:8080/bot/quicktype?bid={%botId}',
-		5: 'http://http://182.254.129.209:8080/bot/card-normal?bid={%botId}',
-		6: 'http://http://182.254.129.209:8080/bot/card-info?bid={%botId}',
-		7: 'http://http://182.254.129.209:8080/bot/qa?bid={%botId}'
+		1: 'http://127.0.0.1:80/index',
+		2: 'http://127.0.0.1:80/map',
+		3: 'http://127.0.0.1:80/list',
+		4: 'http://127.0.0.1:80/detail'
 	};
 
 	// 标记页面数据是否发生修改
@@ -11294,35 +11394,13 @@
 	}
 
 	var self = this;
-	exports.initSideBar = function(botId, page){
-		$('.jbotsidebar [data-pid]').click(function(evt){
+	exports.initSideBar = function(){
+		$('.jnavbarlist [data-pid]').click(function(evt){
 			evt.preventDefault();
 			
 			var pid = $(evt.currentTarget).attr('data-pid') - 0;
-			if (page == 'BOTINFO' && !botId &&	// 新建机器人页面 
-				([
-					pageNameMap.ENTITY,
-					pageNameMap.INTENT,
-					pageNameMap.QUICKTYPE,
-					pageNameMap.CARDINFO,
-					pageNameMap.CARDNORMAL,
-					pageNameMap.QA
-				].indexOf(pid) >= 0)) { // 点击跳转实体页或意图页，禁止跳转
-				self.showDialog({
-					title: '提示',
-					text: '请先创建机器人',
-					confirmText: '确定'
-				});
-			} else {
-				var url = pageUrlMap[pid].replace('{%botId}', botId);
-				location.href = url;
-			}
-		});
-
-		// 卡片侧边栏下拉操作
-		$('.jbotsidebar .jcard .jtitle').click(function(evt){
-			$(this).toggleClass('cur');
-			$('.jbotsidebar .jcard .jsubcard').slideToggle();
+			
+			location.href = pageUrlMap[pid];
 		});
 
 		$('.jpageheadbar .juser').bind('click', function(evt){
@@ -11333,30 +11411,10 @@
 				confirmText: '确定',
 				onConfirm: function(){
 					removeCookie('skey');
-					location.href = 'http://http://182.254.129.209:8080';
+					location.href = 'http://127.0.0.1:80';
 				}
 			});
 		});
-
-		// 卡片
-		/*if($('.mod-sidenav-sub a').hasClass('cur')) {
-			$('.mod-sidenav-sub').css('display', 'block');
-		} else {
-			$('.mod-sidenav-sub').css('display', 'none');
-		}
-		var flag = true;
-		$('.mod-sidenav-card').click(function() {
-			if(flag) {
-				$('.mod-sidenav-portal li .mod-sidenav-card:after').css('background-position','-101px -34px');
-				flag = false;
-			} else {
-				$('.mod-sidenav-portal li .mod-sidenav-card:after').css('background-position','-101px -22px');
-				flag = true;
-			}
-			$('.mod-sidenav-sub').slideToggle();
-		});*/
-		
-
 
 	};
 
@@ -11377,7 +11435,7 @@
 		
 		ifr.attr('src', [
 			'http://xui.ptlogin2.qq.com/cgi-bin/xlogin?appid=1600000640&style=32&target=self',
-			's_url=' + encodeURIComponent('http://http://182.254.129.209:8080/bot/proxy')
+			's_url=' + encodeURIComponent('http://127.0.0.1:80/bot/proxy')
 		].join('&'));
 
 		loginContainer.removeClass('hidden');
@@ -11804,14 +11862,14 @@
 	}
 
 /***/ },
-/* 14 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * 机器人数据增删改查模块
 	 */
-	var UTIL = __webpack_require__(12);
-	var config = __webpack_require__(15);
+	var UTIL = __webpack_require__(8);
+	var config = __webpack_require__(11);
 	var prefix = config.modalPrefix;
 
 	module.exports = {
@@ -11918,15 +11976,15 @@
 	};
 
 /***/ },
-/* 15 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = {
-		modalPrefix: 'http://http://182.254.129.209:8080/data'
+		modalPrefix: 'http://127.0.0.1:80/data'
 	};
 
 /***/ },
-/* 16 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -11934,11 +11992,11 @@
 	/**
 	 * xtemplate runtime
 	 */
-	var util = __webpack_require__(17);
-	var nativeCommands = __webpack_require__(19);
+	var util = __webpack_require__(13);
+	var nativeCommands = __webpack_require__(15);
 	var commands = {};
-	var Scope = __webpack_require__(20);
-	var LinkedBuffer = __webpack_require__(21);
+	var Scope = __webpack_require__(16);
+	var LinkedBuffer = __webpack_require__(17);
 
 	// for performance: reduce hidden class
 	function TplWrap(name, runtime, root, scope, buffer, originalName, fn, parent) {
@@ -12377,7 +12435,7 @@
 	 */
 
 /***/ },
-/* 17 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -12385,7 +12443,7 @@
 	// http://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet
 	// http://wonko.com/post/html-escaping
 
-	var escapeHtml = __webpack_require__(18);
+	var escapeHtml = __webpack_require__(14);
 
 	var SUBSTITUTE_REG = /\\?\{([^{}]+)\}/g;
 	var win = typeof global !== 'undefined' ? global : window;
@@ -12493,7 +12551,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 18 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/*!
@@ -12577,7 +12635,7 @@
 
 
 /***/ },
-/* 19 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12586,8 +12644,8 @@
 	 * native commands for xtemplate.
 	 */
 
-	var Scope = __webpack_require__(20);
-	var util = __webpack_require__(17);
+	var Scope = __webpack_require__(16);
+	var util = __webpack_require__(13);
 	var commands = {
 	  // range(start, stop, [step])
 	  range: function range(scope, option) {
@@ -12856,7 +12914,7 @@
 	module.exports = commands;
 
 /***/ },
-/* 20 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -13025,7 +13083,7 @@
 	module.exports = Scope;
 
 /***/ },
-/* 21 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13033,7 +13091,7 @@
 	/**
 	 * LinkedBuffer of generate content from xtemplate
 	 */
-	var util = __webpack_require__(17);
+	var util = __webpack_require__(13);
 
 	function Buffer(list, next, tpl) {
 	  this.list = list;
@@ -13179,7 +13237,7 @@
 	 */
 
 /***/ },
-/* 22 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13190,9 +13248,9 @@
 	 * simple facade for runtime and compiler
 	 */
 
-	var XTemplateRuntime = __webpack_require__(16);
+	var XTemplateRuntime = __webpack_require__(12);
 	var util = XTemplateRuntime.util;
-	var Compiler = __webpack_require__(23);
+	var Compiler = __webpack_require__(19);
 	var _compile = Compiler.compile;
 
 	/**
@@ -13297,7 +13355,7 @@
 	 */
 
 /***/ },
-/* 23 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13306,14 +13364,14 @@
 	 * translate ast to js function code
 	 */
 
-	var XTemplateRuntime = __webpack_require__(16);
-	var parser = __webpack_require__(24);
-	parser.yy = __webpack_require__(25);
+	var XTemplateRuntime = __webpack_require__(12);
+	var parser = __webpack_require__(20);
+	parser.yy = __webpack_require__(21);
 	var util = XTemplateRuntime.util;
 	var nativeCommands = XTemplateRuntime.nativeCommands;
 	var nativeUtils = XTemplateRuntime.utils;
 
-	var compilerTools = __webpack_require__(26);
+	var compilerTools = __webpack_require__(22);
 	var pushToArray = compilerTools.pushToArray;
 	var wrapByDoubleQuote = compilerTools.wrapByDoubleQuote;
 	var convertIdPartsToRawAccessor = compilerTools.convertIdPartsToRawAccessor;
@@ -14022,7 +14080,7 @@
 	 */
 
 /***/ },
-/* 24 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';/*
@@ -14102,7 +14160,7 @@
 	ret=undefined;self.$$=$$;for(var i=0;i<len;i++){self['$'+(len-i)]=peekStack(valueStack,i+1);}if(reducedAction){ret=reducedAction.call(self);}if(ret!==undefined){$$=ret;}else{$$=self.$$;}var reverseIndex=len*-1;stateStack.splice(reverseIndex,len);valueStack.splice(reverseIndex,len);symbolStack.splice(reverseIndex,len);symbolStack.push(reducedSymbol);valueStack.push($$);var newState=gotos[peekStack(stateStack)][reducedSymbol];stateStack.push(newState);break;case GrammarConst.ACCEPT_TYPE:return $$;}}};return parser;}();if(true){module.exports=parser;}
 
 /***/ },
-/* 25 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14308,7 +14366,7 @@
 	module.exports = ast;
 
 /***/ },
-/* 26 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14440,7 +14498,18 @@
 	};
 
 /***/ },
-/* 27 */
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
