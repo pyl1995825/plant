@@ -6,6 +6,7 @@
             <a class="footer_link" href="#">百科协议</a>                
             <a class="footer_link" href="#">注册协议</a>                
             <a class="footer_link" href="#">常见问题</a>
+            <a class="footer_link" href="http://182.254.129.209:8080/plant_admin/html/page/user-list.html">管理员登录</a>
         </div>
         <div><p>
               技术支持：PoleSwify<br />
